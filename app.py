@@ -3,7 +3,8 @@ import pandas as pd
 from src.validator import run_validation
 from src.utils import generate_excel, generate_pdf
 
-st.set_page_config(page_title="Data Quality Validator", layout="wide")
+st.set_page_config(page_title="Data Quality Validator", 
+                   layout="wide", page_icon="📊")
 
 st.title("📊 Validador Automático de Calidad de Datos")
 
@@ -22,8 +23,10 @@ with st.sidebar:
 
 if uploaded_file:
     try:
-        df = pd.read_csv(uploaded_file) if uploaded_file.name.endswith('.csv') else pd.read_excel(uploaded_file)
-        results = run_validation(df)
+        # Corrección: st.spinner
+        with st.spinner("Analizando calidad de datos..."):
+            df = pd.read_csv(uploaded_file) if uploaded_file.name.endswith('.csv') else pd.read_excel(uploaded_file)
+            results = run_validation(df)
 
         if "error" in results:
             st.error(results["error"])
