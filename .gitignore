@@ -1,3 +1,15 @@
-# Entornos virtuales
-./validador
-validador
+# Python
+__pycache__/
+*.pyc
+.env
+.venv/
+.validador
+.validador/
+.DS_Store
+
+# Datos
+*.csv
+*.xlsx
+
+# Logs
+*.log

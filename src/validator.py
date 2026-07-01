@@ -18,11 +18,15 @@ def get_basic_stats(df: pd.DataFrame) -> pd.DataFrame:
     """Retorna estadísticas descriptivas básicas de columnas numéricas."""
     return df.describe().transpose()
 
+# Actualizacion de nueva funcion
+def get_column_types(df: pd.DataFrame) -> pd.DataFrame:
+    """Retorna los tipos de datos de cada columna."""
+    return pd.DataFrame({
+        'Tipo de Dato': df.dtypes.astype(str)
+    })
+
 def run_validation(df: pd.DataFrame) -> Dict[str, Any]:
-    """
-    Orquestador principal que ejecuta todas las validaciones.
-    Retorna un diccionario con los resultados para ser consumidos por la UI.
-    """
+    """Orquestador actualizado."""
     try:
         if df.empty:
             return {"error": "El archivo está vacío."}
@@ -33,9 +37,8 @@ def run_validation(df: pd.DataFrame) -> Dict[str, Any]:
             "missing_values": get_missing_values(df),
             "duplicates": get_duplicates(df),
             "stats": get_basic_stats(df.select_dtypes(include=['number'])),
-            "dtypes": df.dtypes.astype(str).to_dict()
+            "dtypes": get_column_types(df) 
         }
         return results
-        
     except Exception as e:
         return {"error": f"Error al procesar los datos: {str(e)}"}
