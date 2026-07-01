@@ -6,7 +6,7 @@ Aplicación web profesional diseñada para automatizar la auditoría técnica de
 ![Dashboard Principal](./assets/dashboard.jpg)
 *Vista del dashboard mostrando métricas clave y análisis de nulos.*
 
-[App Web]()
+[App Web](https://datavalidador.streamlit.app/)
 
 ## 🖼️ Funcionamiento
 ![Funcionamiento](./assets/funcion.jpg)
